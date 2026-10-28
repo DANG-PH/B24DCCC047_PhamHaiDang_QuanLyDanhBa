@@ -1,10 +1,9 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="96dp" android:orientation="horizontal" android:gravity="center_vertical" android:padding="16dp" android:background="@drawable/card_background">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="96dp" android:orientation="horizontal" android:gravity="center_vertical" android:padding="12dp" android:background="@drawable/card_background">
     <TextView android:id="@+id/avatar" android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/avatar_background" android:gravity="center" android:textColor="@color/primary" android:textStyle="bold" android:textSize="22sp" android:importantForAccessibility="no"/>
     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="14dp">
         <TextView style="@style/Body" android:text="" android:id="@+id/contactName" android:textColor="@color/ink" android:textStyle="bold"/>
-        <TextView style="@style/Body" android:text="" android:id="@+id/contactPhone" android:layout_marginTop="4dp"/>
-        <TextView style="@style/Body" android:text="" android:id="@+id/contactGroup" android:textColor="@color/primary" android:textSize="13sp" android:layout_marginTop="4dp"/>
+        <TextView style="@style/Body" android:text="" android:id="@+id/contactPhone" android:layout_marginTop="2dp"/>
+        <TextView style="@style/Body" android:text="" android:id="@+id/contactGroup" android:textColor="@color/primary" android:textSize="13sp" android:layout_marginTop="2dp"/>
     </LinearLayout>
     <TextView android:id="@+id/favoriteStar" android:layout_width="24dp" android:layout_height="wrap_content" android:text="@string/item_contact_text_1" android:textColor="#A36500" android:textSize="24sp" android:contentDescription="@string/favorite"/>
 </LinearLayout>

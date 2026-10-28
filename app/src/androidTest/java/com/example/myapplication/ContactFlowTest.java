@@ -33,7 +33,7 @@ public class ContactFlowTest {
     private void screenshot(String name) throws Exception {
         InstrumentationRegistry.getInstrumentation().waitForIdleSync();
         // Let the frame and transient UI settle before capturing a real device screenshot.
-        Thread.sleep(900);
+        Thread.sleep(2500);
         File dir = new File(InstrumentationRegistry.getInstrumentation().getTargetContext()
                 .getExternalFilesDir(null), "screenshots");
         assertTrue(dir.isDirectory() || dir.mkdirs());
@@ -49,6 +49,18 @@ public class ContactFlowTest {
             screenshot("01_login");
             onView(withId(R.id.loginButton)).perform(scrollTo(), click());
             onView(withId(R.id.loginError)).check(matches(withText(R.string.login_empty)));
+            screenshot("12_login_empty");
+            onView(withId(R.id.passwordInput)).perform(replaceText("123456"), closeSoftKeyboard());
+            onView(withId(R.id.loginButton)).perform(scrollTo(), click());
+            onView(withId(R.id.loginError)).check(matches(withText(R.string.login_empty)));
+            onView(withId(R.id.usernameInput)).perform(replaceText("admin"));
+            onView(withId(R.id.passwordInput)).perform(replaceText(""), closeSoftKeyboard());
+            onView(withId(R.id.loginButton)).perform(scrollTo(), click());
+            onView(withId(R.id.loginError)).check(matches(withText(R.string.login_empty)));
+            onView(withId(R.id.usernameInput)).perform(replaceText("wrong"));
+            onView(withId(R.id.passwordInput)).perform(replaceText("123456"), closeSoftKeyboard());
+            onView(withId(R.id.loginButton)).perform(scrollTo(), click());
+            onView(withId(R.id.loginError)).check(matches(withText(R.string.login_wrong)));
             onView(withId(R.id.usernameInput)).perform(replaceText("admin"));
             onView(withId(R.id.passwordInput)).perform(replaceText("wrong"), closeSoftKeyboard());
             onView(withId(R.id.loginButton)).perform(scrollTo(), click());
@@ -72,6 +84,13 @@ public class ContactFlowTest {
             onView(withId(R.id.saveContactButton)).perform(scrollTo(), click());
             onView(withId(R.id.phoneInput)).check(matches(hasErrorText("Số điện thoại phải có 10 chữ số và bắt đầu bằng 0")));
             screenshot("04_add_invalid");
+            for (String invalid : new String[]{"9012345678", "09012345678"}) {
+                onView(withId(R.id.phoneInput)).perform(replaceText(invalid), closeSoftKeyboard());
+                onView(withId(R.id.saveContactButton)).perform(scrollTo(), click());
+                onView(withId(R.id.phoneInput)).check(matches(hasErrorText(
+                        "Số điện thoại phải có 10 chữ số và bắt đầu bằng 0")));
+                assertEquals(3, ContactRepository.getInstance().getContacts().size());
+            }
             onView(withId(R.id.phoneInput)).perform(replaceText("0901234567"), closeSoftKeyboard());
             onView(withId(R.id.saveContactButton)).perform(scrollTo(), click());
             onView(withId(R.id.phoneInput)).check(matches(hasErrorText("Số điện thoại đã tồn tại trong danh bạ")));
@@ -116,7 +135,7 @@ public class ContactFlowTest {
             for (int attempt = 0; attempt < 5; attempt++) {
                 AccessibilityNodeInfo root = InstrumentationRegistry.getInstrumentation()
                         .getUiAutomation().getRootInActiveWindow();
-                if (root != null && "com.example.myapplication".contentEquals(root.getPackageName())) break;
+                if (root != null && "com.example.myapplication".equals(String.valueOf(root.getPackageName()))) break;
                 InstrumentationRegistry.getInstrumentation().getUiAutomation()
                         .performGlobalAction(AccessibilityService.GLOBAL_ACTION_BACK);
                 Thread.sleep(700);
@@ -132,4 +151,64 @@ public class ContactFlowTest {
             screenshot("11_contacts_deleted");
         } finally { Intents.release(); }
     }
+    @Test public void allGroupAndGenderOptionsAllowBlankNotesAndFavoriteCanBeRemoved() {
+        try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
+            String[] names = {"Liên hệ nữ", "Liên hệ khác"};
+            String[] phones = {"0977777777", "0988888888"};
+            String[] groups = {"Công việc", "Khác"};
+            int[] genders = {R.id.genderFemale, R.id.genderOther};
+            String[] genderNames = {"Nữ", "Khác"};
+            for (int i = 0; i < names.length; i++) {
+                onView(withId(R.id.addContactButton)).perform(click());
+                onView(withId(R.id.groupInput)).check(matches(withSpinnerText("Gia đình")));
+                onView(withId(R.id.nameInput)).perform(replaceText(names[i]), closeSoftKeyboard());
+                onView(withId(R.id.phoneInput)).perform(replaceText(phones[i]), closeSoftKeyboard());
+                onView(withId(R.id.groupInput)).perform(scrollTo(), click());
+                onData(allOf(is(instanceOf(String.class)), is(groups[i]))).perform(click());
+                onView(withId(genders[i])).perform(scrollTo(), click());
+                onView(withId(R.id.saveContactButton)).perform(scrollTo(), click());
+                onView(withId(R.id.favoriteCount)).check(matches(withText("1 yêu thích")));
+                onData(instanceOf(Contact.class)).inAdapterView(withId(R.id.contactList))
+                        .atPosition(3 + i).perform(click());
+                onView(withId(R.id.detailGroup)).check(matches(withText(groups[i])));
+                onView(withId(R.id.detailGender)).check(matches(withText(genderNames[i])));
+                onView(withId(R.id.detailNotes)).check(matches(withText(R.string.no_notes)));
+                onView(withId(R.id.detailFavorite)).check(matches(isNotChecked()));
+                onView(withId(R.id.backButton)).perform(scrollTo(), click());
+            }
+            onData(instanceOf(Contact.class)).inAdapterView(withId(R.id.contactList))
+                    .atPosition(1).perform(click());
+            onView(withId(R.id.detailFavorite)).check(matches(isChecked()));
+            onView(withId(R.id.detailFavorite)).perform(scrollTo(), click());
+            onView(withId(R.id.backButton)).perform(scrollTo(), click());
+            onView(withId(R.id.favoriteCount)).check(matches(withText("0 yêu thích")));
+            onData(instanceOf(Contact.class)).inAdapterView(withId(R.id.contactList)).atPosition(1)
+                    .onChildView(withId(R.id.favoriteStar)).check(matches(withEffectiveVisibility(Visibility.GONE)));
+        }
+    }
+    @Test public void emptyListCanAcceptNewContactWithDefaultValues() throws Exception {
+        try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
+            for (int i = 0; i < 3; i++) {
+                onData(instanceOf(Contact.class)).inAdapterView(withId(R.id.contactList))
+                        .atPosition(0).perform(click());
+                onView(withId(R.id.deleteButton)).perform(scrollTo(), click());
+                onView(withId(android.R.id.button1)).perform(click());
+            }
+            onView(withId(R.id.totalCount)).check(matches(withText("0 liên hệ")));
+            onView(withId(R.id.favoriteCount)).check(matches(withText("0 yêu thích")));
+            onView(withId(R.id.emptyContacts)).check(matches(isDisplayed()));
+            screenshot("13_empty_contacts");
+            onView(withId(R.id.addContactButton)).perform(click());
+            onView(withId(R.id.nameInput)).perform(replaceText("Liên hệ đầu tiên"), closeSoftKeyboard());
+            onView(withId(R.id.phoneInput)).perform(replaceText("0955555555"), closeSoftKeyboard());
+            onView(withId(R.id.saveContactButton)).perform(scrollTo(), click());
+            onView(withId(R.id.totalCount)).check(matches(withText("1 liên hệ")));
+            onData(instanceOf(Contact.class)).inAdapterView(withId(R.id.contactList)).atPosition(0).perform(click());
+            onView(withId(R.id.detailGroup)).check(matches(withText("Gia đình")));
+            onView(withId(R.id.detailGender)).check(matches(withText("Nam")));
+            onView(withId(R.id.detailNotes)).check(matches(withText(R.string.no_notes)));
+            onView(withId(R.id.backButton)).perform(scrollTo(), click());
+        }
+    }
+
 }

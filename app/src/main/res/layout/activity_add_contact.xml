@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='UTF-8'?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/screen" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="@color/background" android:padding="24dp" android:clipToPadding="false">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
         <com.google.android.material.button.MaterialButton style="@style/SecondaryAction" android:id="@+id/backButton" android:text="@string/back"/>
@@ -7,7 +6,7 @@
         <TextView style="@style/Label" android:text="@string/full_name"/>
         <EditText style="@style/Field" android:id="@+id/nameInput" android:hint="@string/activity_add_contact_hint_2" android:inputType="textPersonName|textCapWords" android:singleLine="true" android:autofillHints="name"/>
         <TextView style="@style/Label" android:text="@string/phone"/>
-        <EditText style="@style/Field" android:id="@+id/phoneInput" android:hint="@string/activity_add_contact_hint_3" android:inputType="phone" android:singleLine="true" android:autofillHints="phone"/>
+        <EditText style="@style/Field" android:id="@+id/phoneInput" android:hint="@string/activity_add_contact_hint_3" android:inputType="phone" android:singleLine="true" android:autofillHints="phone" android:digits="0123456789"/>
         <TextView style="@style/Label" android:text="@string/group"/>
         <Spinner android:id="@+id/groupInput" android:layout_width="match_parent" android:layout_height="52dp" android:background="@drawable/field_background" android:contentDescription="@string/group"/>
         <TextView style="@style/Label" android:text="@string/gender"/>
@@ -18,7 +17,7 @@
         </RadioGroup>
         <CheckBox android:id="@+id/favoriteInput" android:layout_width="match_parent" android:layout_height="48dp" android:text="@string/favorite"/>
         <TextView style="@style/Label" android:text="@string/notes"/>
-        <EditText style="@style/Field" android:id="@+id/notesInput" android:hint="@string/activity_add_contact_hint_7" android:inputType="textMultiLine|textCapSentences" android:minLines="2" android:gravity="top"/>
+        <EditText style="@style/Field" android:id="@+id/notesInput" android:hint="@string/activity_add_contact_hint_7" android:inputType="textMultiLine|textCapSentences" android:minLines="2" android:gravity="top" android:importantForAutofill="no"/>
         <com.google.android.material.button.MaterialButton style="@style/Action" android:id="@+id/saveContactButton" android:text="@string/save_contact"/>
     </LinearLayout>
 </ScrollView>

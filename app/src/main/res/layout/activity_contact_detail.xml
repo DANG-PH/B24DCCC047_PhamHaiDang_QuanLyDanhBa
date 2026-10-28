@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='UTF-8'?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/screen" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="@color/background" android:padding="24dp" android:clipToPadding="false">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
         <com.google.android.material.button.MaterialButton style="@style/SecondaryAction" android:id="@+id/backButton" android:text="@string/back"/>

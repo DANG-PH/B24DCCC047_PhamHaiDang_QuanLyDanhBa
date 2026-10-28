@@ -51,7 +51,10 @@ app/src/androidTest/          # Kiểm thử luồng UI bằng Espresso
 - [Báo cáo Word](docs/B24DCCC047_PhamHaiDang_BaoCao.docx)
 - [Ảnh chụp ứng dụng đang chạy](docs/screenshots/)
 - [Kết quả kiểm tra](docs/KIEM_THU.md)
+- [Đối chiếu đầy đủ từng yêu cầu của đề](docs/DOI_CHIEU_YEU_CAU.md)
 
 Báo cáo có thông tin sinh viên, hình ảnh và mô tả triển khai của cả 4 Activity. Ảnh được chụp từ máy ảo Pixel 7 bằng UI Automation trong các kịch bản Espresso, không phải ảnh giao diện dựng lại.
 
 Dự án giữ cấu hình Gradle/AGP/SDK của Android Studio ban đầu: Gradle 9.6.0, AGP 9.4.1, compile/target SDK 37, mã nguồn Java 11, Gradle daemon JDK 25. Không commit `.idea`, `.gradle`, `build`, `local.properties` hoặc APK.
+
+Báo cáo có các đoạn Java tiêu biểu kèm tên file/số dòng và các thuộc tính XML liên quan tới yêu cầu. `tools/generate_report.py` đọc trực tiếp mã nguồn và ảnh trong `docs/screenshots/` để tạo lại báo cáo (cần Python với `python-docx` và `lxml`). Sau khi tạo lại cần render và kiểm tra bố cục trước khi nộp.

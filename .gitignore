@@ -7,3 +7,7 @@ captures/
 .externalNativeBuild/
 .cxx/
 .DS_Store
+
+# Report generator cache
+__pycache__/
+*.pyc
