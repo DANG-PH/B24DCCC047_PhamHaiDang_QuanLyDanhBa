@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/screen" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="@color/background" android:padding="24dp" android:clipToPadding="false">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView style="@style/Label" android:text="@string/activity_login_text_1" android:layout_marginTop="40dp" android:textColor="@color/primary"/>
+        <TextView style="@style/Heading" android:text="@string/activity_login_text_2" android:layout_marginTop="12dp"/>
+        <TextView style="@style/Body" android:text="@string/activity_login_text_3"/>
+        <TextView style="@style/Label" android:text="@string/activity_login_text_4"/>
+        <EditText style="@style/Field" android:id="@+id/usernameInput" android:hint="@string/activity_login_hint_5" android:inputType="text" android:singleLine="true" android:autofillHints="username" android:imeOptions="actionNext"/>
+        <TextView style="@style/Label" android:text="@string/activity_login_text_6"/>
+        <EditText style="@style/Field" android:id="@+id/passwordInput" android:hint="@string/activity_login_hint_7" android:inputType="textPassword" android:singleLine="true" android:autofillHints="password" android:imeOptions="actionDone"/>
+        <TextView style="@style/Body" android:text="@string/login_wrong" android:id="@+id/loginError" android:visibility="gone" android:textColor="@color/danger" android:layout_marginTop="12dp" android:accessibilityLiveRegion="polite"/>
+        <com.google.android.material.button.MaterialButton style="@style/Action" android:id="@+id/loginButton" android:text="@string/login"/>
+        <TextView style="@style/Body" android:text="@string/activity_login_text_8" android:layout_marginTop="32dp" android:gravity="center"/>
+    </LinearLayout>
+</ScrollView>

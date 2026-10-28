@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/screen" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="@color/background" android:padding="24dp" android:clipToPadding="false">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <com.google.android.material.button.MaterialButton style="@style/SecondaryAction" android:id="@+id/backButton" android:text="@string/back"/>
+        <TextView style="@style/Heading" android:text="@string/add_contact" android:layout_marginTop="16dp"/>
+        <TextView style="@style/Body" android:text="@string/activity_add_contact_text_1"/>
+        <TextView style="@style/Label" android:text="@string/full_name"/>
+        <EditText style="@style/Field" android:id="@+id/nameInput" android:hint="@string/activity_add_contact_hint_2" android:inputType="textPersonName|textCapWords" android:singleLine="true" android:autofillHints="name"/>
+        <TextView style="@style/Label" android:text="@string/phone"/>
+        <EditText style="@style/Field" android:id="@+id/phoneInput" android:hint="@string/activity_add_contact_hint_3" android:inputType="phone" android:singleLine="true" android:autofillHints="phone"/>
+        <TextView style="@style/Label" android:text="@string/group"/>
+        <Spinner android:id="@+id/groupInput" android:layout_width="match_parent" android:layout_height="52dp" android:background="@drawable/field_background" android:contentDescription="@string/group"/>
+        <TextView style="@style/Label" android:text="@string/gender"/>
+        <RadioGroup android:id="@+id/genderInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:checkedButton="@id/genderMale">
+            <RadioButton android:id="@+id/genderMale" android:layout_width="wrap_content" android:layout_height="48dp" android:text="@string/activity_add_contact_text_4" android:layout_marginEnd="16dp"/>
+            <RadioButton android:id="@+id/genderFemale" android:layout_width="wrap_content" android:layout_height="48dp" android:text="@string/activity_add_contact_text_5" android:layout_marginEnd="16dp"/>
+            <RadioButton android:id="@+id/genderOther" android:layout_width="wrap_content" android:layout_height="48dp" android:text="@string/activity_add_contact_text_6" android:layout_marginEnd="16dp"/>
+        </RadioGroup>
+        <CheckBox android:id="@+id/favoriteInput" android:layout_width="match_parent" android:layout_height="48dp" android:text="@string/favorite"/>
+        <TextView style="@style/Label" android:text="@string/notes"/>
+        <EditText style="@style/Field" android:id="@+id/notesInput" android:hint="@string/activity_add_contact_hint_7" android:inputType="textMultiLine|textCapSentences" android:minLines="2" android:gravity="top"/>
+        <com.google.android.material.button.MaterialButton style="@style/Action" android:id="@+id/saveContactButton" android:text="@string/save_contact"/>
+    </LinearLayout>
+</ScrollView>

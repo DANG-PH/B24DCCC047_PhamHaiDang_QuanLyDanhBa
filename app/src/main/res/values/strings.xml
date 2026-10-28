@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+    <string name="app_name">Danh bạ</string>
+    <string name="login">Đăng nhập</string>
+    <string name="add_contact">Thêm liên hệ</string>
+    <string name="save_contact">Lưu liên hệ</string>
+    <string name="back">Quay lại</string>
+    <string name="favorite">Liên hệ yêu thích</string>
+    <string name="full_name">Họ và tên</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="notes">Ghi chú</string>
+    <string name="group">Nhóm liên hệ</string>
+    <string name="gender">Giới tính</string>
+    <string name="login_wrong">Sai tên đăng nhập hoặc mật khẩu</string>
+    <string name="login_empty">Vui lòng nhập tên đăng nhập và mật khẩu</string>
+    <string name="name_required">Vui lòng nhập họ và tên</string>
+    <string name="phone_invalid">Số điện thoại phải có 10 chữ số và bắt đầu bằng 0</string>
+    <string name="phone_duplicate">Số điện thoại đã tồn tại trong danh bạ</string>
+    <string name="saved">Đã thêm liên hệ</string>
+    <string name="deleted">Đã xóa liên hệ</string>
+    <string name="total_format">%1$d liên hệ</string>
+    <string name="favorites_format">%1$d yêu thích</string>
+    <string name="no_notes">Chưa có ghi chú</string>
+    <string name="missing_contact">Liên hệ không còn tồn tại</string>
+    <string name="dial_unavailable">Thiết bị không có ứng dụng quay số</string>
+    <string name="delete_title">Xóa liên hệ?</string>
+    <string name="delete_message">Bạn có chắc muốn xóa %1$s khỏi danh bạ?</string>
+    <string name="delete_contact">Xóa liên hệ</string>
+    <string name="cancel">Hủy</string>
+    <string name="call">Gọi điện</string>
+    <string name="empty_contacts">Chưa có liên hệ. Hãy thêm liên hệ đầu tiên.</string>
+    <string-array name="contact_groups">
+        <item>Gia đình</item>
+        <item>Bạn bè</item>
+        <item>Công việc</item>
+        <item>Khác</item>
+    </string-array>
+    <string name="activity_add_contact_text_1">Một kết nối mới, một câu chuyện mới.</string>
+    <string name="activity_add_contact_hint_2">Ví dụ: Nguyễn Văn An</string>
+    <string name="activity_add_contact_hint_3">Ví dụ: 0901234567</string>
+    <string name="activity_add_contact_text_4">Nam</string>
+    <string name="activity_add_contact_text_5">Nữ</string>
+    <string name="activity_add_contact_text_6">Khác</string>
+    <string name="activity_add_contact_hint_7">Thêm ghi chú (không bắt buộc)</string>
+    <string name="activity_login_text_1">DANH BẠ CÁ NHÂN</string>
+    <string name="activity_login_text_2">Chào mừng trở lại</string>
+    <string name="activity_login_text_3">Đăng nhập để quản lý những kết nối của bạn.</string>
+    <string name="activity_login_text_4">Tên đăng nhập</string>
+    <string name="activity_login_hint_5">Nhập tên đăng nhập</string>
+    <string name="activity_login_text_6">Mật khẩu</string>
+    <string name="activity_login_hint_7">Nhập mật khẩu</string>
+    <string name="activity_login_text_8">B24DCCC047 · Phạm Hải Đăng</string>
+    <string name="activity_main_text_1">KẾT NỐI MỖI NGÀY</string>
+    <string name="activity_main_text_2">Danh bạ của bạn</string>
+    <string name="activity_main_text_3">Lưu giữ những người quan trọng.</string>
+    <string name="activity_main_text_4">3 liên hệ</string>
+    <string name="activity_main_text_5">1 yêu thích</string>
+    <string name="activity_main_text_6">Tất cả liên hệ</string>
+    <string name="item_contact_text_1">★</string>
+</resources>

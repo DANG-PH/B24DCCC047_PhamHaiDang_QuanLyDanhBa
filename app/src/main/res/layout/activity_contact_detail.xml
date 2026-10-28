@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/screen" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="@color/background" android:padding="24dp" android:clipToPadding="false">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <com.google.android.material.button.MaterialButton style="@style/SecondaryAction" android:id="@+id/backButton" android:text="@string/back"/>
+        <TextView android:id="@+id/detailAvatar" android:layout_width="80dp" android:layout_height="80dp" android:layout_gravity="center_horizontal" android:layout_marginTop="24dp" android:layout_marginBottom="16dp" android:background="@drawable/avatar_background" android:gravity="center" android:textColor="@color/primary" android:textSize="34sp" android:textStyle="bold" android:importantForAccessibility="no"/>
+        <TextView style="@style/Heading" android:text="" android:id="@+id/detailName" android:gravity="center"/>
+        <TextView style="@style/Label" android:text="@string/phone"/>
+        <TextView style="@style/Body" android:text="" android:id="@+id/detailPhone" android:textColor="@color/ink" android:textSize="21sp"/>
+        <TextView style="@style/Label" android:text="@string/group"/>
+        <TextView style="@style/Body" android:text="" android:id="@+id/detailGroup"/>
+        <TextView style="@style/Label" android:text="@string/gender"/>
+        <TextView style="@style/Body" android:text="" android:id="@+id/detailGender"/>
+        <TextView style="@style/Label" android:text="@string/notes"/>
+        <TextView style="@style/Body" android:text="" android:id="@+id/detailNotes"/>
+        <CheckBox android:id="@+id/detailFavorite" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginTop="12dp" android:text="@string/favorite"/>
+        <com.google.android.material.button.MaterialButton style="@style/Action" android:id="@+id/callButton" android:text="@string/call"/>
+        <com.google.android.material.button.MaterialButton style="@style/SecondaryAction" android:id="@+id/deleteButton" android:text="@string/delete_contact" android:textColor="@color/danger"/>
+    </LinearLayout>
+</ScrollView>
